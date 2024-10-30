@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import EventCard from '@/components/EventCard.vue'
-import type { Event } from '@/type'
+import type { Event } from '@/types'
 import { ref } from 'vue'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const events = ref<Event[]>([

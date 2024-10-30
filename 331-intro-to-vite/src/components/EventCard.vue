@@ -1,6 +1,5 @@
 <script setup lang="ts">
-
-import type { Event } from '@/type'
+import type { Event } from '@/types'
 defineProps<{
   event: Event
 }>()
@@ -15,23 +14,21 @@ defineProps<{
 //   petsAllowed: true,
 //   organizer: 'Kat Laydee'
 // })
-
 </script>
 
 <template>
-  
   <div class="event-class">
     <div class="event-card">
       <h2>{{ event.title }}</h2>
       <span>@{{ event.time }} on {{ event.date }}</span>
     </div>
-  </div>       
+  </div>
 </template>
 <style scoped>
 .event-card {
   padding: 20px;
   width: 250px;
- cursor: pointer;
+  cursor: pointer;
   border: 1px solid #39495c;
   margin-bottom: 18px;
 }
