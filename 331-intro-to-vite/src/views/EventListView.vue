@@ -6,6 +6,11 @@ import { ref, onMounted, computed, watchEffect } from 'vue'
 import EventService from '@/services/EventService'
 
 const events = ref<Event[] | null>(null)
+  const totalEvents = ref(0)
+  const hasNexPage = computed(() => {
+  const totalPages = Math.ceil(totalEvents.value / 2)
+  return page.value < totalPages
+})
   const props = defineProps({
   page: {
     type: Number,
@@ -19,6 +24,7 @@ onMounted(() => {
     EventService.getEvents(2, page.value)
       .then((response) => {
         events.value = response.data
+        totalEvents.value = response.headers['x-total-count']
       })
       .catch((error) => {
         console.error('There was an error!', error)
@@ -36,16 +42,24 @@ onMounted(() => {
       <EventCard :event="event" />
       <CategoryOrganizer :event="event" />
     </div>
-  </div>
-  <RouterLink
-    :to="{ name: 'event-list-view', query: { page: page - 1 } }"
-    rel="prev"
-    v-if="page != 1"
-    >Prev Page</RouterLink
-  >
+    <div class="pagination">
+      <RouterLink
+        id="page-prev"
+        :to="{ name: 'event-list-view', query: { page: page - 1 } }"
+       rel="prev"
+        v-if="page != 1"
+        >&#60; Prev Page</RouterLink
+      >
 
-  <RouterLink :to="{ name: 'event-list-view', query: { page: page + 1 } }" rel="next">Next Page</RouterLink
-  > 
+      <RouterLink
+        id="page-next"
+        :to="{ name: 'event-list-view', query: { page: page + 1 } }"
+        rel="next"
+        v-if="hasNexPage"
+        >Next Page &#62;</RouterLink
+      >
+    </div>
+  </div>  
 </template>
 <style scoped>
 .events {
