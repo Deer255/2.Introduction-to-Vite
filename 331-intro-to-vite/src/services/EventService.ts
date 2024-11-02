@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'https://my-json-server.typicode.com/wyh0324/wyh20222091/',
+  baseURL: 'https://my-json-server.typicode.com/Deer255/2.Introduction-to-Vite-2/',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
