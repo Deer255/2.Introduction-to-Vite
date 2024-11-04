@@ -7,9 +7,7 @@ const props = defineProps<{
 }>()
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { event } = toRefs(props)
-
 </script>
 <template>
-  
   <p>Edit event here</p>
 </template>
