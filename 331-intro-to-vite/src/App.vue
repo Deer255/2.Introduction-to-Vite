@@ -10,7 +10,6 @@ const pageSize = ref<number | string>(2)
 
 const route = useRoute()
 const router = useRouter()
-
 const updateRoute = (newSize: number) => {
   router.push({
     name: route.name,
@@ -59,7 +58,6 @@ const updateRoute = (newSize: number) => {
   text-align: center;
   color: #2c3e50;
 }
-
 nav {
   padding: 30px;
 }
@@ -68,10 +66,10 @@ nav a {
   font-weight: bold;
   color: #2c3e50;
 }
-
 nav a.router-link-exact-active {
   color: #42b983;
 }
+
 h2 {
   font-size: 20px;
 }
@@ -85,5 +83,22 @@ h2 {
 }
 #flashMessage {
   animation: yellofade 3s ease-in-out;
+}
+.pagination {
+  display: flex;
+  width: 290px;
+}
+.pagination a {
+  flex: 1;
+  text-decoration: none;
+  color: #2c3e50;
+}
+
+#page-prev {
+  text-align: left;
+}
+
+#page-next {
+  text-align: right;
 }
 </style>
